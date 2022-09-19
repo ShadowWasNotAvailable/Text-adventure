@@ -1,5 +1,9 @@
 from random import randint
 
+
+global Mandelvann
+Mandelvann = 0
+
 def inventory():
 
     print(f"Ditt inventory:")
@@ -23,4 +27,6 @@ Asking = input ("Will du se ditt inventory?")
 if Asking == ("Y"):
     inventory()
 
-{}
+print (f"{Mandelvann}")
+
+ 
