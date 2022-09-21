@@ -1,5 +1,6 @@
 from random import randint
 
+
 Liv = 100
 Mandelvann = 0
 Pistol = 0
@@ -39,51 +40,77 @@ def rom666 ():
         else:
             print ("Du åpner døren og går inn, Du lukker døren bak deg og ser den forsvinne, Rommer er helt svart og helt stille, Du hører en stemme i hode som sier: Ser ut som det er enda en som kommer til å bli spist av mørket.")
             exit
+    
+    elif Chance == "N" or "n":
+        print ("WIP To be continued")
 
 def rom3 ():
-    print("WIP redirect til rom 1.")
-    print(".")
+    print("Du kommer in til rom 3 og ser rundt i rommet.")
+    print("Du ser en boks i hjørnet men den er låst skal du prøve å ødelegge boxen for å få tak i det som er på insiden? Y/N")
     
-    rom1 ()
+    Start ()
 
-    R3Choice = False
-    while R3Choice:
+    R3Choice1 = True
+    while R3Choice1:
+        global Liv
+
         Valg4 = input ("->")
-        if Valg4 == "1":
-            print("")
-            R3Choice = False
-        elif Valg4 == "2":
-            print(".")
-            R3Choice = False
+        if Valg4 == "Y" or "y":
+            Liv =- 10
+            print(f"Du knuser boksen med hendene dine men du skader hendene dine, det tar 10 Liv, Du har nå {Liv} liv.")
+            print("Du går tilbake til der du kom fra.")
+            R3Choice1 = False
+        
+        elif Valg4 == "N" or "n":
+            print("Du velger å ikke ødelegge boksen og lar den ligge og går tilbake til der du kom fra.")
+            R3Choice1 = False
     
         else:
             print ("Ops du skrev noe feil prøv på nytt!")
 
+    R3Choice2 = True
+    while R3Choice2:
+        print ("Skal du gå tilbake? Y/N")
+        Choice = input ("->")
+        
+        if Choice == "Y" or "y":
+            print ("Du går tilbake")
+            R3Choice2 = False
+            Start ()
+
+        elif Choice == "N" or "n":
+            print ("WIP du går tilbake")
+            R3Choice2 = False
+            Start ()
+
+        else:
+            print ("Ops du skrev noe feil prøv på nytt!")
+        
 def rom2 ():
     print("Du kommer in til rom 2 og ser rundt i rommet.")
     print("Du ser at det ligger noe i et mørkt hjørne skal du se hva det er? J/N.")
-    
-    rom1 ()
 
-    R2Choice = False
+    R2Choice = True
     while R2Choice:
         global Liv
         global Pistol
         Valg3 = input ("->")
+        
         if Valg3 == "J" or "j":
             print("Du går til hjørnet og prøver å ta det som ligger der.")
-            print("En rotte biter deg og tar 5 liv")
-            print("Du tar pistolen etter rotten sprang vekk")
             Liv -= 5
+            print(f"En rotte biter deg og tar 5 liv. Du har nå {Liv} liv.")
+            print("Du tar pistolen etter rotten sprang vekk")
             Pistol += 1
             R2Choice = False
+        
         elif Valg3 == "N" or "n":
             print(".")
             R2Choice = False
     
         else:
             print ("Ops du skrev noe feil prøv på nytt!")
-
+                
 def rom1 ():
     global Mandelvann
     print("Etter å ha gått in i rom 1 hører du et brøl.")
@@ -108,35 +135,31 @@ def rom1 ():
         else:
             print ("Ops du skrev noe feil prøv på nytt!")
 
+def Start ():
+    StartChoice = True
+    while StartChoice:
+        print("1. 2. 3.")
+        Valg1 = input ("->")
 
+        if Valg1 == "1":
+            print("Du går mot rom 1.")
+            StartChoice = False
+            rom1 ()
+
+        elif Valg1 == "2":
+            print("Du går mot rom 2.")
+            StartChoice = False
+            rom2 ()
+
+        elif Valg1 == "3":
+            print("Du går mot rom 3.")
+            StartChoice = False
+            rom3 ()
+
+        else:
+            print ("Ops du skrev noe feil prøv på nytt!")
 
 print("Du våkner opp i et rart rom. Det er gule vegger med blomster figurer på dem, hele gulvet er laget av teppe og det lukter våt katt, Du velger å røre teppt og kjenner at det er våt.")
 print("Du tenker: Var ikke jeg ikke netopp i senga, dette må være en drømm. Du kliper deg selv og det gjør ondt, du får en dårlig følelse og er litt i panikk. Etter en liten stund tar du deg sammen og begynner å vandre rundt.")
 print("Du går til rommet på siden av der du våknet der kan du gå 3 forskjellige veier hvilken skal du velge?")
-print("1. 2. 3.")
-
-Choice = True
-while Choice:
- Valg1 = input ("->")
-
- if Valg1 == "1":
-    print("Du går mot rom 1.")
-    Choice = False
-    rom1 ()
-
- elif Valg1 == "2":
-    print("Du går mot rom 2.")
-    Choice = False
-    rom2 ()
-
- elif Valg1 == "3":
-    print("Du går mot rom 3.")
-    Choice = False
-    rom3 ()
-
- else:
-    print ("Ops du skrev noe feil prøv på nytt!")
-        
-
-
-
+Start ()
